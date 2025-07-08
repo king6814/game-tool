@@ -11,7 +11,7 @@ import os
 
 # Tkinter 애플리케이션 생성
 app = tk.Tk()
-app.title("게임 툴 v1.0")
+app.title("게임 툴 v1.1")
 app.geometry('336x400')
 
 element={
@@ -87,7 +87,7 @@ def get_new_Honkai_version_image():
 
 
 def destroy_element_in(key):
-    for i in element[key]:
+    for i in range(len(element[key])):
         element[key][-1].destroy()
         del element[key][-1]
 
@@ -244,11 +244,11 @@ def choose_main_display_game(game):
         button.grid(row=0,column=2,sticky='e',padx=5)
         element['quick_start_area'].append(button)
 
-        button=tk.Button(game_wiki,text='광추',command=lambda : open_website(game,'weapon'))
+        button=tk.Button(game_wiki,text='무기',command=lambda : open_website(game,'weapon'))
         button.grid(row=0,column=3,sticky='e',padx=5)
         element['quick_start_area'].append(button)
 
-        button=tk.Button(game_wiki,text='유물',command=lambda : open_website(game,'artifacts'))
+        button=tk.Button(game_wiki,text='성유물',command=lambda : open_website(game,'artifacts'))
         button.grid(row=0,column=4,sticky='e',padx=5)
         element['quick_start_area'].append(button)
 
@@ -297,11 +297,11 @@ def choose_main_display_game(game):
         button.grid(row=0,column=2,sticky='e',padx=5)
         element['quick_start_area'].append(button)
 
-        button=tk.Button(game_wiki,text='무기',command=lambda : open_website(game,'weapon'))
+        button=tk.Button(game_wiki,text='광추',command=lambda : open_website(game,'weapon'))
         button.grid(row=0,column=3,sticky='e',padx=5)
         element['quick_start_area'].append(button)
 
-        button=tk.Button(game_wiki,text='성유물',command=lambda : open_website(game,'artifacts'))
+        button=tk.Button(game_wiki,text='유물',command=lambda : open_website(game,'artifacts'))
         button.grid(row=0,column=4,sticky='e',padx=5)
         element['quick_start_area'].append(button)
 
