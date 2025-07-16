@@ -96,7 +96,7 @@ def open_game_exe(game_name):
     game_path={
         'Minecraft':r"C:\\XboxGames\\Minecraft Launcher\\Content\\gamelaunchhelper.exe",
         'Genshin':r"C:\\Program Files\\HoYoPlay\\games\\Genshin Impact game\\GenshinImpact.exe",
-        'Star2Rail':r"C:\\Program Files\\HoYoPlay\\games\\Star Rail Games\\StarRail.exe",
+        'StarRail':r"C:\\Program Files\\HoYoPlay\\games\\Star Rail Games\\StarRail.exe",
         'Honkai':r"C:\\Program Files\\HoYoPlay\\games\\Honkai Impact 3rd kr game\\BH3.exe",
         'nikke':r"C:\\NIKKE\\Launcher\\nikke_launcher.exe",
         'lol':r"C:\\Riot Games\\Riot Client\\RiotClientServices.exe"
