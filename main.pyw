@@ -388,6 +388,7 @@ def choose_main_display_game(game):
 
         button=tk.Button(app,text=text,background=color)
         button.grid(row=5, column=0, padx=5, pady=5, columnspan=3)
+        element['quick_start_area'].append(button)
 
         button=tk.Button(app,text='배너 이미지 갱신',command=get_new_StarRail_version_image)
         button.grid(row=5,column=4,padx=5,columnspan=2)
