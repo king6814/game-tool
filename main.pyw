@@ -8,10 +8,11 @@ import webbrowser
 import requests
 from bs4 import BeautifulSoup
 import os
+import datetime
 
 # Tkinter 애플리케이션 생성
 app = tk.Tk()
-app.title("게임 툴 v1.2")
+app.title("게임 툴 v1.3")
 app.geometry('336x400')
 
 element={
@@ -279,6 +280,32 @@ def choose_main_display_game(game):
         combobox.bind("<<ComboboxSelected>>", lambda event: open_etc_site(game))
         element['quick_start_area'].append(combobox)
 
+        today = datetime.date.today()
+        if 1 < today.day <= 16:
+            text = f'나선 초기화 D-{16 - today.day}'
+            if 16-today.day <= 3:
+                color='#ec1c24'
+            else:
+                color='#0ed145'
+        elif today.day == 1:
+            text = f'환상극 초기화 D-0'
+            color='#ec1c24'
+        else:
+            if today.month != 12:
+                next_reset = datetime.date(today.year, today.month + 1, 1)
+            else:
+                next_reset = datetime.date(today.year + 1, 1, 1)
+            delta = (next_reset - today).days
+            text = f'환상극 초기화 D-{delta}'
+            if delta <= 3:
+                color='#ec1c24'
+            else:
+                color='#0ed145'
+
+        button=tk.Button(app,text=text,background=color)
+        button.grid(row=5,column=0,padx=5,pady=5,columnspan=3)
+        element['quick_start_area'].append(button)
+
         button=tk.Button(app,text='배너 이미지 갱신',command=get_new_Genshin_version_image)
         button.grid(row=5,column=4,padx=5,columnspan=2)
         element['quick_start_area'].append(button)
@@ -331,6 +358,36 @@ def choose_main_display_game(game):
         combobox.current(0)
         combobox.bind("<<ComboboxSelected>>", lambda event: open_etc_site(game))
         element['quick_start_area'].append(combobox)
+
+        today = datetime.date.today()
+        events = [
+            ("혼돈", datetime.date(2025, 9, 15)),
+            ("허구", datetime.date(2025, 10, 14)),
+            ("종말", datetime.date(2025, 9, 29)),
+            ("이상중재", datetime.date(2025, 9, 24))]
+
+        next_event_name = ''
+        next_event_day = 43
+
+        for name, start_date in events:
+            delta_days = (today - start_date).days
+            if delta_days % 42==0:
+                days_left = 0
+            else:
+                days_left = 43 - delta_days % 42
+
+            if days_left < next_event_day:
+                next_event_name = name
+                next_event_day = days_left
+
+        text = f'{next_event_name} 초기화 D-{next_event_day}'
+        if next_event_day <= 3:
+            color = '#ec1c24' 
+        else:
+            color = '#0ed145'
+
+        button=tk.Button(app,text=text,background=color)
+        button.grid(row=5, column=0, padx=5, pady=5, columnspan=3)
 
         button=tk.Button(app,text='배너 이미지 갱신',command=get_new_StarRail_version_image)
         button.grid(row=5,column=4,padx=5,columnspan=2)
